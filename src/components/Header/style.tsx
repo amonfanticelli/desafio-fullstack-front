@@ -20,6 +20,8 @@ export const ContainerHeader = styled.div`
 
   h1 {
     color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
   }
   button {
     position: relative;

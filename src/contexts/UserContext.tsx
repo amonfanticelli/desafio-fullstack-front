@@ -19,6 +19,7 @@ export interface UserProviderData {
   isModalEditOpen: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   setModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  logout: () => void;
 }
 
 export const UserContext = createContext<UserProviderData>(
@@ -143,6 +144,11 @@ export const UserProvider = ({ children }: UserProps) => {
       });
   };
 
+  const logout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -159,6 +165,7 @@ export const UserProvider = ({ children }: UserProps) => {
         setModal,
         isModalEditOpen,
         setModalEdit,
+        logout,
       }}
     >
       {children}

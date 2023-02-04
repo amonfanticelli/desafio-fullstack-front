@@ -31,7 +31,6 @@ const ModalEditRemove = ({ setModalEdit, currentContact }: PropsModalEdit) => {
         <Form onSubmit={handleSubmit(handleEditContact)}>
           <label htmlFor="title">Nome</label>
           <input
-            disabled
             placeholder={
               currentContact === null || currentContact === undefined
                 ? "Tecnologia"
@@ -40,9 +39,8 @@ const ModalEditRemove = ({ setModalEdit, currentContact }: PropsModalEdit) => {
             id="title"
             type="text"
           />
-          <label htmlFor="title">Nome</label>
+          <label htmlFor="title">Email</label>
           <input
-            disabled
             placeholder={
               currentContact === null || currentContact === undefined
                 ? "Tecnologia"
@@ -51,9 +49,8 @@ const ModalEditRemove = ({ setModalEdit, currentContact }: PropsModalEdit) => {
             id="title"
             type="text"
           />
-          <label htmlFor="title">Nome</label>
+          <label htmlFor="title">Celular</label>
           <input
-            disabled
             placeholder={
               currentContact === null || currentContact === undefined
                 ? "Tecnologia"
