@@ -11,6 +11,10 @@ export default createGlobalStyle`
   --color-red: rgba(255, 0, 0, 1);
   --color-green: rgba(46, 204, 113, 1);
   
+  /* Grey Scale Palette */
+  --color-grey-4:rgba(18, 18, 20, 1);
+  --color-grey-3:rgba(33, 37, 41, 1) ;
+  --color-grey-0:rgba(248, 249, 250, 1);
   
   /* Feedback Palette */
   --color-sucess:rgba(63, 232, 100, 1); 

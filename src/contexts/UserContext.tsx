@@ -9,7 +9,16 @@ export interface UserProviderData {
   handleRegister: (data: IClient) => void;
   handleLogin: (data: IClientLogin) => void;
   handleGetUserById: () => void;
+  handlePostContact: (data: IContact) => void;
+  handleEditContact: (data: IContact) => void;
+  handleRemoveContact: (currentContact: IContact) => void;
   contact: IContact[];
+  currentContact: IContact;
+  setCurrentContact: React.Dispatch<React.SetStateAction<IContact>>;
+  isModalOpen: boolean;
+  isModalEditOpen: boolean;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const UserContext = createContext<UserProviderData>(
@@ -19,6 +28,11 @@ export const UserContext = createContext<UserProviderData>(
 export const UserProvider = ({ children }: UserProps) => {
   const [client, setClient] = useState<IClient>({} as IClient);
   const [contact, setContactList] = useState<IContact[]>([]);
+  const [currentContact, setCurrentContact] = useState<IContact>(
+    {} as IContact
+  );
+  const [isModalOpen, setModal] = useState(false);
+  const [isModalEditOpen, setModalEdit] = useState(false);
 
   const navigate = useNavigate();
 
@@ -34,9 +48,18 @@ export const UserProvider = ({ children }: UserProps) => {
   const passwordOrEmailError = () =>
     toast.error("Senha ou email incorreto!", { autoClose: 1000 });
 
+  const contactCreated = () =>
+    toast.success("Contato criado com sucesso!", { autoClose: 1000 });
+
+  const contactEdited = () =>
+    toast.success("Contato editado com sucesso!", { autoClose: 1000 });
+
+  const contactRemoved = () =>
+    toast.error("Contato removido com sucesso!", { autoClose: 1000 });
+
   const handleRegister = async (data: IClient) => {
     await api
-      .post("users", data)
+      .post("/users", data)
       .then((response) => {
         if (response.status === 201) {
           accountCreated();
@@ -78,9 +101,65 @@ export const UserProvider = ({ children }: UserProps) => {
       .catch((err) => console.warn(err));
   };
 
+  const handlePostContact = (data: IContact): void => {
+    const token = localStorage.getItem("@token");
+
+    api
+      .post("/contacts", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+
+      .then((response) => {
+        contactCreated();
+        handleGetUserById();
+        setModal(false);
+      })
+      .catch((err) => console.warn(err));
+  };
+
+  const handleEditContact = (data: IContact) => {
+    const token = localStorage.getItem("@token");
+    api
+      .patch(`/contacts/${currentContact.id}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        contactEdited();
+        handleGetUserById();
+        setModalEdit(false);
+      })
+      .catch((err) => console.warn(err));
+  };
+
+  const handleRemoveContact = (currentContact: IContact) => {
+    const token = localStorage.getItem("@token");
+    api
+      .delete(`/contacts/${currentContact.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        contactRemoved();
+        handleGetUserById();
+      });
+  };
+
   return (
     <UserContext.Provider
-      value={{ handleRegister, handleLogin, handleGetUserById, contact }}
+      value={{
+        handleRegister,
+        handleLogin,
+        handleGetUserById,
+        handlePostContact,
+        handleEditContact,
+        handleRemoveContact,
+        contact,
+        currentContact,
+        setCurrentContact,
+        isModalOpen,
+        setModal,
+        isModalEditOpen,
+        setModalEdit,
+      }}
     >
       {children}
     </UserContext.Provider>

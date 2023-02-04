@@ -1,11 +1,13 @@
 import { Section } from "./style";
+import { UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
 
 export const SectionDashboard = () => {
-  //   const { logout } = useContext(UserContext);
+  const { setModal, isModalOpen } = useContext(UserContext);
   return (
     <Section>
       <h1>Adicione seus contatos</h1>
-      <button>clique aqui</button>
+      <button onClick={() => setModal(!isModalOpen)}>clique aqui</button>
     </Section>
   );
 };
