@@ -18,12 +18,9 @@ export const ContainerHeader = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  img {
-    min-width: 6rem;
-    width: 7%;
-    height: 100%;
+  h1 {
+    color: white;
   }
-
   button {
     position: relative;
     padding: 1.4rem 1.1rem;

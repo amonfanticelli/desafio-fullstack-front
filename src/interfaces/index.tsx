@@ -9,34 +9,21 @@ export interface IClient {
   fullName: string;
   email: string;
   cellphone: string;
-  password: string;
+  password?: string;
   isActive?: boolean;
   createdAt?: Date;
   userPasswordCheck?: string;
+  contacts?: [];
 }
 
 export interface IClientLogin {
   email: string;
   password: string;
 }
-export interface ICreateTransaction {
-  usernameCredited: string;
-  value: number;
-}
-
-export interface IListTransctions {
+export interface IContact {
   id?: string;
-  value: number;
-  createdAt: Date;
-}
-
-export interface ITransactions {
-  id?: string;
-  value: number;
-  createdAt: string;
-  type: string;
-}
-export interface IAccount {
-  id?: string;
-  balance: number;
+  fullName: string;
+  email: string;
+  cellphone: string;
+  createdAt?: Date;
 }

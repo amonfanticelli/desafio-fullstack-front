@@ -19,7 +19,7 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   width: 100%;
   height: 3.046rem;
-  background: var(--color-grey-4);
+  background: grey;
   border-radius: 4.06066px;
 
   display: flex;

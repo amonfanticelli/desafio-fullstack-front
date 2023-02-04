@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Main = styled.main`
   display: flex;
   padding: 1rem;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start
   background: var(--color-white);
   width: 100vw;
   height: 90vh;

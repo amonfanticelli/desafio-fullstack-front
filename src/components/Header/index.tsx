@@ -8,7 +8,7 @@ export const HeaderDashboard = () => {
   return (
     <Header>
       <ContainerHeader>
-        <h2>Bem Vindo</h2>
+        <h1>Bem Vindo</h1>
         <button>Logout</button>
       </ContainerHeader>
     </Header>

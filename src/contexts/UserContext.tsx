@@ -3,11 +3,13 @@ import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { IClient, IClientLogin, UserProps } from "../interfaces";
+import { IClient, IClientLogin, IContact, UserProps } from "../interfaces";
 
 export interface UserProviderData {
   handleRegister: (data: IClient) => void;
   handleLogin: (data: IClientLogin) => void;
+  handleGetUserById: () => void;
+  contact: IContact[];
 }
 
 export const UserContext = createContext<UserProviderData>(
@@ -15,7 +17,8 @@ export const UserContext = createContext<UserProviderData>(
 );
 
 export const UserProvider = ({ children }: UserProps) => {
-  const [login, setLogin] = useState<IClientLogin>();
+  const [client, setClient] = useState<IClient>({} as IClient);
+  const [contact, setContactList] = useState<IContact[]>([]);
 
   const navigate = useNavigate();
 
@@ -48,7 +51,6 @@ export const UserProvider = ({ children }: UserProps) => {
       .post("/session", data)
       .then((response) => {
         if (response.status === 200) {
-          setLogin(response.data.user);
           window.localStorage.setItem("@token", response.data.token);
           window.localStorage.setItem("@userId", response.data.client.id);
           navigate(`/dashboard`);
@@ -57,8 +59,29 @@ export const UserProvider = ({ children }: UserProps) => {
       .catch((err) => passwordOrEmailError());
   };
 
+  const handleGetUserById = () => {
+    const token = localStorage.getItem("@token");
+    api
+      .get("/user", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        const userData = {
+          fullName: response.data.fullName,
+          email: response.data.email,
+          cellphone: response.data.cellphone,
+        };
+        setClient(userData);
+        setContactList(response.data.contacts);
+      })
+
+      .catch((err) => console.warn(err));
+  };
+
   return (
-    <UserContext.Provider value={{ handleRegister, handleLogin }}>
+    <UserContext.Provider
+      value={{ handleRegister, handleLogin, handleGetUserById, contact }}
+    >
       {children}
     </UserContext.Provider>
   );
