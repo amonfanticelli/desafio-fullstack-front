@@ -73,6 +73,11 @@ export const Form = styled.form`
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.625rem;
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
   select {
     width: 90%;
@@ -103,10 +108,11 @@ export const Form = styled.form`
 
       background: var(--color-primary-negative);
       color: var(--color-grey-0);
-      border: 1.2182px solid #59323f;
+      border: 1.2182px solid #00ffff;
       border-radius: 4px;
       &:hover {
-        background-color: var(--color-primary);
+        color: black;
+        background-color: #00ffff;
         transition: 0.8s;
       }
     }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Section = styled.section`
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 70%;
+  width: 73%;
   display: flex;
   justify-content: space-between;
   h1 {

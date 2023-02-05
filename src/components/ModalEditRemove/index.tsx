@@ -29,35 +29,26 @@ const ModalEditRemove = ({ setModalEdit, currentContact }: PropsModalEdit) => {
         </div>
 
         <Form onSubmit={handleSubmit(handleEditContact)}>
-          <label htmlFor="title">Nome</label>
+          <label htmlFor="name">Nome</label>
           <input
-            placeholder={
-              currentContact === null || currentContact === undefined
-                ? "Tecnologia"
-                : currentContact.fullName
-            }
-            id="title"
+            placeholder={currentContact.fullName}
+            id="name"
             type="text"
+            {...register("fullName")}
           />
-          <label htmlFor="title">Email</label>
+          <label htmlFor="email">Email</label>
           <input
-            placeholder={
-              currentContact === null || currentContact === undefined
-                ? "Tecnologia"
-                : currentContact.fullName
-            }
-            id="title"
+            placeholder={currentContact.email}
+            id="email"
             type="text"
+            {...register("email")}
           />
-          <label htmlFor="title">Celular</label>
+          <label htmlFor="cellphone">Celular</label>
           <input
-            placeholder={
-              currentContact === null || currentContact === undefined
-                ? "Tecnologia"
-                : currentContact.fullName
-            }
-            id="title"
-            type="text"
+            placeholder={currentContact.cellphone}
+            id="cellphone"
+            type="number"
+            {...register("cellphone")}
           />
 
           <div>

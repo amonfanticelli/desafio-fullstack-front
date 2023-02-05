@@ -7,7 +7,7 @@ export const SectionDashboard = () => {
   return (
     <Section>
       <h1>Adicione seus contatos</h1>
-      <button onClick={() => setModal(!isModalOpen)}>clique aqui</button>
+      <button onClick={() => setModal(!isModalOpen)}>Add</button>
     </Section>
   );
 };

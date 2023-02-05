@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const List = styled.ul`
-  width: 70%;
+  width: 73%;
 
   background: var(--color-grey-3);
   border-radius: 4px;

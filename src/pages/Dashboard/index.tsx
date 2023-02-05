@@ -5,13 +5,15 @@ import { ListDashboard } from "../../components/List";
 import { useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
-import { Container2 } from "./style";
+import { Container, NoContentTitle, ImgDashboard } from "./style";
 import Modal from "../../components/ModalAddContact";
 import ModalEditRemove from "../../components/ModalEditRemove";
 import { motion } from "framer-motion";
+import DashboarImg from "../../img/dashImg.svg";
 
 const Dashboard = () => {
   const {
+    contact,
     handleGetUserById,
     isModalOpen,
     isModalEditOpen,
@@ -30,7 +32,7 @@ const Dashboard = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 2 }}
     >
-      <Container2>
+      <Container>
         {isModalOpen && <Modal setModal={setModal} />}
         {isModalEditOpen && (
           <ModalEditRemove
@@ -42,9 +44,16 @@ const Dashboard = () => {
         <HeaderDashboard />
         <Main>
           <SectionDashboard />
-          <ListDashboard />
+          {!contact.length ? (
+            <>
+              <NoContentTitle>Você não possui nenhum contato</NoContentTitle>
+              <ImgDashboard src={DashboarImg} alt="" />
+            </>
+          ) : (
+            <ListDashboard />
+          )}
         </Main>
-      </Container2>
+      </Container>
     </motion.div>
   );
 };

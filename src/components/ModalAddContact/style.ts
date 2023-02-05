@@ -13,7 +13,6 @@ export const Container = styled.div`
   position: fixed;
 
   div {
-  
     min-width: 300px;
     width: 20%;
 
@@ -100,10 +99,11 @@ export const Form = styled.form`
 
     background: var(--color-primary-negative);
     color: var(--color-grey-0);
-    border: 1.2182px solid #59323f;
+    border: 1.2182px solid #00ffff;
     border-radius: 4px;
     &:hover {
-      background-color: var(--color-primary);
+      color: black;
+      background-color: #00ffff;
       transition: 0.8s;
     }
   }
