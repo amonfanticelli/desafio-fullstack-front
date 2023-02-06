@@ -10,8 +10,11 @@ export const ListDashboard = () => {
     <List>
       {contact.map((contact) => (
         <ListItem key={contact.id}>
-          <h2> {contact.fullName}</h2>
-          <span>{contact.cellphone}</span>
+          <div>
+            <span>Nome: {contact.fullName}</span>
+            <span>Celular: {contact.cellphone}</span>
+            <span>Email: {contact.email}</span>
+          </div>
           <button
             onClick={() => {
               setModalEdit(!isModalEditOpen);

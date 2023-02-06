@@ -18,7 +18,7 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   width: 100%;
-  height: 3.046rem;
+  height: 100%;
   background: grey;
   border-radius: 4.06066px;
 
@@ -26,21 +26,25 @@ export const ListItem = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  h2 {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-    color: #ffffff;
+
+  div {
+    heigth: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0.2rem;
   }
   span {
     font-style: normal;
     font-weight: 400;
     font-size: 12.182px;
     line-height: 22px;
-    margin-right: 1.5rem;
     color: var(--color-grey-0);
+    margin-right: 1rem;
   }
+
   button {
     color: var(--color-grey-0);
     background-color: transparent;
