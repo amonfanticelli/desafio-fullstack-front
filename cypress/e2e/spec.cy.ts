@@ -37,6 +37,7 @@ describe("test if you can register", () => {
     cy.get("#userPasswordCheck").type("1234");
 
     cy.contains("Registrar").click();
+    cy.url().should("include", "/login");
   });
 });
 

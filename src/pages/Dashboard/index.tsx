@@ -9,7 +9,7 @@ import { Container, NoContentTitle, ImgDashboard } from "./style";
 import Modal from "../../components/ModalAddContact";
 import ModalEditRemove from "../../components/ModalEditRemove";
 import { motion } from "framer-motion";
-import DashboarImg from "../../img/dashImg.svg";
+import DashboarImg from "../../assets/dashImg.svg";
 
 const Dashboard = () => {
   const {
