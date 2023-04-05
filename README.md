@@ -19,3 +19,5 @@
 ## Rode os testes Cypress e2e:
 
 `npx cypress open`
+
+## Por ser um projeto FullStack é necessário estar com ambas as aplicações rodando. Esse é o link do repositório do BackEnd: https://github.com/amonfanticelli/desafio-fullstack-back
